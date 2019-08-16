@@ -1,5 +1,6 @@
 <script>
 	import { onMount } from 'svelte';
+	import Chart from './Chart.svelte';
 
 	let forces = [];
 	let force = '';
@@ -74,10 +75,8 @@
 	{#if crimeBreakdown === null}
 		No crime data for {force}
 	{:else if typeof crimeBreakdown === 'object'}
-		{#each Object.keys(crimeBreakdown) as crime}
-			<p>
-				{crime}: {crimeBreakdown[crime]}
-			</p>
-		{/each}
+		<!-- still think I need the chart here... -->
 	{/if}
+
+	<Chart data={crimeBreakdown} />
 </div>
