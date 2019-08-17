@@ -57,9 +57,7 @@
 				Choose a police force
 			</option>
 			{#each forces as { id, name }}
-				<option value={id}>
-					{name}
-				</option>
+				<option value={id}>{name}</option>
 			{/each}
 		</select>
 
@@ -69,14 +67,12 @@
 	</form>
 
 	{#if loading}
-		loading...
+		<p>loading...</p>
 	{/if}
 
 	{#if crimeBreakdown === null}
 		No crime data for {force}
-	{:else if typeof crimeBreakdown === 'object'}
-		<!-- still think I need the chart here... -->
+	{:else}
+		<Chart {crimeBreakdown} />
 	{/if}
-
-	<Chart data={crimeBreakdown} />
 </div>
